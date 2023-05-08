@@ -10,7 +10,7 @@ const index_2 = __importDefault(require("../Model/Todos/index"));
 const Validator_1 = __importDefault(require("../Validator"));
 const Routes = (0, express_1.Router)();
 Routes.get('/todos', index_1.default, (0, Error_1.ErrorBoundary)(async (req, res) => {
-    const todos = await index_2.default.find().select('_id todo completed');
+    const todos = await index_2.default.find().select('_id todo completed').sort({ todo: 1 });
     res.status(200).json(todos);
 }));
 Routes.post('/todos', index_1.default, (0, Error_1.ErrorBoundary)(async (req, res) => {
@@ -31,7 +31,7 @@ Routes.post('/todos', index_1.default, (0, Error_1.ErrorBoundary)(async (req, re
 }));
 Routes.put('/todos/:id', index_1.default, (0, Error_1.ErrorBoundary)(async (req, res) => {
     const { error } = (0, Validator_1.default)(req.body);
-    const updateTodo = await index_2.default.findOne({ _id: req.params.id }).select('_id todo completed');
+    const updateTodo = await index_2.default.findOne({ _id: req.params.id }).select('_id todo completed').sort({ todo: 1 });
     if (error) {
         const errArr = [];
         error.details.map(err => errArr.push(err.message));

@@ -9,11 +9,7 @@ Routes.get(
 	'/todos',
 	Validate,
 	ErrorBoundary(async (req, res) => {
-<<<<<<< HEAD
-		const todos = await TodoModel.find().select('_id todo completed');
-=======
 		const todos = await TodoModel.find().select('_id todo completed').sort({ todo: 1 });
->>>>>>> b5eaaf9 (fixed some git Issues)
 		res.status(200).json(todos);
 	})
 );
@@ -43,11 +39,7 @@ Routes.put(
 	Validate,
 	ErrorBoundary(async (req, res) => {
     const { error } = validateTodos(req.body);
-<<<<<<< HEAD
-    const updateTodo = await TodoModel.findOne({ _id: req.params.id }).select('_id todo completed');
-=======
     const updateTodo = await TodoModel.findOne({ _id: req.params.id }).select('_id todo completed').sort({ todo: 1 });
->>>>>>> b5eaaf9 (fixed some git Issues)
     if( error ){
       const errArr: (string| null)[] = [];
       error.details.map(err => errArr.push(err.message));
