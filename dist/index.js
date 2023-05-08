@@ -29,5 +29,3 @@ App.get('/', (req, res) => {
 App.use('/api', Routes_1.default);
 App.use('*', Error_1.ErrorHandler);
 App.listen(port, () => console.log('listening'));
-App.use('*', Error_1.ErrorHandler);
-App.listen(port, () => console.log('listening'));

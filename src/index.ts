@@ -30,7 +30,3 @@ App.use('/api', Routes);
 App.use('*',ErrorHandler)
 
 App.listen(port, () => console.log('listening'))
-
-App.use('*',ErrorHandler);
-
-App.listen(port, () => console.log('listening'));
